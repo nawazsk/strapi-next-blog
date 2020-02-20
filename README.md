@@ -1,0 +1,1 @@
+A blog developed using strapi as backend and next js as front end.
