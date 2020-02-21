@@ -1,11 +1,12 @@
 import { useRouter } from "next/router";  
-import Query from "../components/query";  
+import Query from "../../components/query";  
 import ReactMarkdown from "react-markdown";  
 import Moment from "react-moment";  
-import ARTICLE_QUERY from "../apollo/queries/article/article";
+import ARTICLE_QUERY from "../../apollo/queries/article/article";
 
-const Article = () => {  
+const Article = (props) => {  
   const router = useRouter();
+  console.log(router);
   return (
     <Query query={ARTICLE_QUERY} id={router.query.id}>
       {({ data: { article } }) => {

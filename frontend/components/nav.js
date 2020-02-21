@@ -27,10 +27,8 @@ const Nav = () => {
                       return (
                         <li key={category.id}>
                           <Link
-                            href={{
-                              pathname: "category",
-                              query: { id: category.id }
-                            }}
+                            href={{pathname: "/category/[category]", query:{id: category.id, name: category.name}}} 
+                            as={`/category/${category.name}`}
                           >
                             <a className="uk-link-reset">{category.name}</a>
                           </Link>

@@ -2,9 +2,12 @@ import React from "react";
 import Link from "next/link";
 
 const Card = ({ article }) => {  
+  
   return (
-    <Link href={{ pathname: "article", query: { id: article.id } }}>
-      <a className="uk-link-reset">
+    // <Link href={{ pathname: "article", query: { id: article.id } }}>
+    // <Link href="/[article]" as={`/${article.slug}`}>
+    <Link href={{pathname: "/article/[article]", query:{id: article.id, slug: article.slug}}} as={`/article/${article.slug}`}>
+      <a className="uk-link-reset" id={article.id}>
         <div className="uk-card uk-card-muted">
           <div className="uk-card-media-top">
             <img

@@ -5,6 +5,7 @@ const ARTICLES_QUERY = gql`
     articles {
       id
       title
+      slug
       category {
         id
         name
