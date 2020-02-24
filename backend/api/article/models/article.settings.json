@@ -28,8 +28,8 @@
       "required": true
     },
     "category": {
-      "model": "category",
-      "via": "articles"
+      "via": "articles",
+      "model": "category"
     },
     "slug": {
       "type": "string",

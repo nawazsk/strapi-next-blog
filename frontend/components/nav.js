@@ -28,7 +28,7 @@ const Nav = () => {
                         <li key={category.id}>
                           <Link
                             href={{pathname: "/category/[category]", query:{id: category.id, name: category.name}}} 
-                            as={`/category/${category.name}`}
+                            as={`/category/${category.name}-${category.id}`}
                           >
                             <a className="uk-link-reset">{category.name}</a>
                           </Link>
@@ -46,4 +46,4 @@ const Nav = () => {
   );
 };
 
-export default Nav; 
+export default Nav;

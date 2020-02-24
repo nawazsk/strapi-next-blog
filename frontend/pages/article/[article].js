@@ -6,34 +6,41 @@ import ARTICLE_QUERY from "../../apollo/queries/article/article";
 
 const Article = (props) => {  
   const router = useRouter();
-  console.log(router);
+  let id;
+  
+  if(router.query.article) {
+    id = router.query.article.split("-");
+    id = id[id.length-1];
+  }
   return (
-    <Query query={ARTICLE_QUERY} id={router.query.id}>
-      {({ data: { article } }) => {
-        return (
-          <div>
-            <div
-              id="banner"
-              className="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding uk-margin"
-              data-src={process.env.API_URL + article.image.url}
-              data-srcset={process.env.API_URL + article.image.url}
-              data-uk-img
-            >
-              <h1>{article.title}</h1>
-            </div>
+    id ? (
+        <Query query={ARTICLE_QUERY} id={id}>
+          {({ data: { article } }) => {
+            return (
+              <div>
+                <div
+                  id="banner"
+                  className="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding uk-margin"
+                  data-src={process.env.API_URL + article.image.url}
+                  data-srcset={process.env.API_URL + article.image.url}
+                  data-uk-img
+                >
+                  <h1>{article.title}</h1>
+                </div>
 
-            <div className="uk-section">
-              <div className="uk-container uk-container-small">
-                <ReactMarkdown source={article.content} />
-                <p>
-                  <Moment format="MMM Do YYYY">{article.published_at}</Moment>
-                </p>
+                <div className="uk-section">
+                  <div className="uk-container uk-container-small">
+                    <ReactMarkdown source={article.content} />
+                    <p>
+                      <Moment format="MMM Do YYYY">{article.published_at}</Moment>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        );
-      }}
-    </Query>
+            );
+          }}
+        </Query>
+      ):null
   );
 };
 
